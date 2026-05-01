@@ -1,6 +1,6 @@
 public class Cat extends Pet {
     
-    boolean indoor;
+    private boolean indoor;
 
     public Cat(String name, int age, String breed, boolean indoor){
      super(name, breed, age);

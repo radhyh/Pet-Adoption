@@ -2,10 +2,17 @@ import java.util.ArrayList;
 
 public class AdoptionCentre {
     
-    String centreName = "";
-    ArrayList<Pet> pets = new ArrayList<>();
+    private String centreName = "PAC-MAN";
+    private ArrayList<Pet> pets;
     
-    public static void addPet(Pet pet, ArrayList<Pet> pets){
+    public AdoptionCentre (String centreName, ArrayList<Pet> pets){
+        this.pets = pets;
+        this.centreName = centreName;
+    }
+
+    public void addPet(Pet pet){
         pets.add(pet);
+        System.out.println("Welcome " + pet.getName() + " to " + centreName + "!");
+
     }
 }
