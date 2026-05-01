@@ -3,17 +3,19 @@
 public class User {
     
     private String userId;
-    Pet adoptedPets;
+    private ArrayList<Pet> adoptedPets;
 
     public User(String userId){
         this.userId = userId;
-        
+    }
+  
     public void adoptPet(Pet p){
         adoptedPet.add(p);
     }
     
     public void returnPet(Pet p){
-        adoptedPet = null;
+       adoptedPets.remove(p);
+      p.setAvailable(true);
     }
 
     public void setUserId(String userId){
