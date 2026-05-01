@@ -5,6 +5,7 @@ public class main {
         //Dog dog1 = new Dog("Buddy", 3, "Labrador", true);
 
         cat1.Sound();
+        System.out.println("rad");
 
 
 
