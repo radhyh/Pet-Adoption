@@ -1,4 +1,4 @@
-public abstract class Pet {
+public class Pet {
    
     private String name;
     private String breed;
@@ -12,7 +12,9 @@ public abstract class Pet {
         this.age = age;
     }
 
-    public abstract void Sound();
+    public void Sound(){
+        System.out.println("Pet makes a sound");
+    }
 
     public void displayInfo() {
         System.out.println("Name: " + name + ", Breed: " + breed + 
