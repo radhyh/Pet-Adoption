@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class AdoptionCentre {
     
-    private String centreName = "PAC-MAN";
+    private String centreName;
     private ArrayList<Pet> pets;
     
     public AdoptionCentre (String centreName, ArrayList<Pet> pets){
@@ -15,15 +15,12 @@ public class AdoptionCentre {
 
     }
     public void showAvailablePets(){
-        System.out.println("Current available pets: ");
+        System.out.println("Current available pets:");
         for (Pet p : pets){
 
             if (p.isAvailable()){
     
                 p.displayInfo();
-            }
-            else{
-                System.out.println(p.getName() + " is not available.");
             }
         }
 
@@ -31,8 +28,11 @@ public class AdoptionCentre {
     public void adoptPet(User u, Pet p){
         if(p.isAvailable()){
             p.setAvailable(false);
-            System.out.println("User ID: " + u.getUserId() + " has adopted " + p.getName());
+            u.adoptPet(p);
             System.out.println("Adoption Sucessful!");
+        }
+        else{
+            System.out.println(p.getName() + " is not available.");
         }
     }
 }
