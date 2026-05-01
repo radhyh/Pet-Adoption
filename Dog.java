@@ -1,3 +1,5 @@
+/*Name: NUR DAMIA HANI BINTI AHMAD SHA
+  Matric Number: 2515376 */
 public class Dog extends Pet {
     
    private boolean trained;

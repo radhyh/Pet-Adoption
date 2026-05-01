@@ -1,3 +1,5 @@
+/*Name: NUR AUNI FAQIHAH BINTI DK SUFIAN 
+  Matric Number: 2517726 */
 public class Cat extends Pet {
     
     private boolean indoor;
