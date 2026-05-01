@@ -15,7 +15,7 @@ public class Pet {
     }
 
     public void Sound(){
-        System.out.println("Pet makes a sound: ");
+        System.out.print("Pet makes a sound: ");
     }
 
     public void displayInfo() {

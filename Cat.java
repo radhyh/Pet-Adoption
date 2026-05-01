@@ -22,6 +22,14 @@ public class Cat extends Pet {
     public void setIndoor(boolean indoor){
         this.indoor = indoor;
     }
-    
+    public void displayInfo() {
+        super.displayInfo();
+        if(isIndoor()){
+            System.out.println("Indoor: Yes" );
+        }
+        else{
+            System.out.println("Indoor: No" );
+        }
+    }
 }
 

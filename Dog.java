@@ -9,21 +9,26 @@ public class Dog extends Pet {
     
        super(name, breed, age);
        this.trained= trained;
-    
-}
+    }
+    @Override
+    public void Sound(){
+        super.Sound();
+        System.out.print("woof");
+    }
+    public boolean isTrained(){
+        return trained;
+    }
+    public void setTrained(boolean trained){
+        this.trained=trained;
+    }
+    public void displayInfo() {
+        super.displayInfo();  
+        if(isTrained()){
+            System.out.println("Trained: Yes" );
+        }
+        else{
+            System.out.println("Trained: No" );
+        }
+    }
 
-
-@Override
-
-public void sound(){
-    System.out.println("woof!");
-}
-
-public boolean isTrained(){
-    return trained;
-}
-
-public void setTrained(boolean trained){
-    this.trained=trained;
-}
 }

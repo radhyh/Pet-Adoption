@@ -9,12 +9,11 @@ public class AdoptionCentre {
     private ArrayList<Pet> pets;
     
     public AdoptionCentre (String centreName, ArrayList<Pet> pets){
-        this.pets = pets;
         this.centreName = centreName;
+        this.pets = pets;
     }
     public void addPet(Pet p){
         pets.add(p);
-        System.out.println("Welcome " + p.getName() + " to " + centreName + "!");
 
     }
     public void showAvailablePets(){
@@ -24,15 +23,17 @@ public class AdoptionCentre {
             if (p.isAvailable()){
     
                 p.displayInfo();
+                p.Sound();
+                System.out.println();
             }
         }
 
     }
     public void adoptPet(User u, Pet p){
         if(p.isAvailable()){
-            p.setAvailable(false);
             u.adoptPet(p);
-            System.out.println("Adoption Sucessful!");
+            System.out.println("Adoption Sucessful! User ID: " + u.getUserId());
+            p.setAvailable(false);
         }
         else{
             System.out.println(p.getName() + " is not available.");
