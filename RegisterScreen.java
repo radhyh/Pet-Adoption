@@ -94,7 +94,7 @@ registerBtn.setOnAction(e -> {
     }
 
     // register new user — username is the name they entered
-    User newUser = new User(name, pwd);
+    User newUser = new User(name, pwd, "user");
     centre.getUsers().add(newUser);
     centre.saveUsers("users.txt");
 

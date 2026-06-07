@@ -7,11 +7,13 @@ public class User {
     
     private String username;
     private String password;
+    private String role;
     private ArrayList<Pet> adoptedPets;
 
-    public User(String username, String password) {
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
+        this.role = role;
         this.adoptedPets = new ArrayList<>();
     }
 
@@ -31,5 +33,7 @@ public class User {
 
     public String getUsername() { return username; }
     public String getPassword() { return password; }
+    public String getRole() { return role; }
+    public boolean isAdmin() { return role.equals("admin"); }
     public ArrayList<Pet> getAdoptedPets() { return adoptedPets; }
 }

@@ -92,11 +92,32 @@ public class PetListScreen {
                         selected, centre, currentUser, stage);
                 stage.setScene(adoptScreen.getScene());
             }
+
+            
         });
 
-        VBox listCard = new VBox(15, listTitle, petTable, adoptBtn, statusLabel);
-        listCard.setPadding(new Insets(20));
-        listCard.setStyle(CARD_STYLE);
+        // remove adoptBtn from here — we add it conditionally below
+VBox listCard = new VBox(15, listTitle, petTable, statusLabel);
+listCard.setPadding(new Insets(20));
+listCard.setStyle(CARD_STYLE);
+
+// add buttons based on role
+if (currentUser.isAdmin()) {
+    Button addPetBtn = new Button("ADD PET");
+    addPetBtn.setFont(Font.font("Times New Roman", 14));
+    addPetBtn.setStyle(BTN_GREEN);
+
+    addPetBtn.setOnAction(e -> {
+        AddPetScreen addPet = new AddPetScreen(centre, currentUser, stage);
+        stage.setScene(addPet.getScene());
+    });
+
+    HBox btnBox = new HBox(15, adoptBtn, addPetBtn);
+    btnBox.setAlignment(Pos.CENTER);
+    listCard.getChildren().add(btnBox);
+} else {
+    listCard.getChildren().add(adoptBtn);
+}
 
 
         // ════════════════════════════════════════════════════
