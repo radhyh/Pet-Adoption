@@ -165,22 +165,22 @@ registerBtn.setOnAction(e -> {
     // ── style constants ──────────────────────────────────────
     private static final String CARD_STYLE =
             "-fx-background-color: white;" +
-            "-fx-border-color: black;" +
+            "-fx-border-color: #E91E8C;" +
             "-fx-border-width: 1;" +
             "-fx-border-radius: 15;" +
             "-fx-background-radius: 15;";
-
-    private static final String BTN_GREEN =
-            "-fx-background-color: #388E3C;" +
+ 
+    private static final String BTN_PINK =
+            "-fx-background-color: #E91E8C;" +
             "-fx-text-fill: white;" +
             "-fx-font-weight: bold;";
-
+ 
     private static final String BTN_OUTLINE =
             "-fx-background-color: transparent;" +
-            "-fx-border-color: #388E3C;" +
+            "-fx-border-color: #E91E8C;" +
             "-fx-border-width: 1;" +
             "-fx-border-radius: 5;" +
-            "-fx-text-fill: #388E3C;" +
+            "-fx-text-fill: #E91E8C;" +
             "-fx-font-weight: bold;";
 }
 

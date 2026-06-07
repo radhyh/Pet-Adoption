@@ -186,7 +186,7 @@ public class PetAdoptionScreen {
 
         root.setPadding(new Insets(25));
         root.setAlignment(Pos.TOP_CENTER);
-        root.setStyle("-fx-background-color: #F5F5F5;");
+        root.setStyle("-fx-background-color: #FCE4EC;");
 
         scene = new Scene(root, 700, 700);
     }
@@ -197,18 +197,18 @@ public class PetAdoptionScreen {
 
     private static final String CARD_STYLE =
             "-fx-background-color: white;" +
-            "-fx-border-color: black;" +
+            "-fx-border-color: #E91E8C;" +
             "-fx-border-width: 1;" +
             "-fx-border-radius: 15;" +
             "-fx-background-radius: 15;";
-
-    private static final String BTN_RED =
-            "-fx-background-color: #D32F2F;" +
+ 
+    private static final String BTN_PINK =
+            "-fx-background-color: #E91E8C;" +
             "-fx-text-fill: white;" +
             "-fx-font-weight: bold;";
-
-    private static final String BTN_GREEN =
-            "-fx-background-color: #388E3C;" +
+ 
+    private static final String BTN_DARK_PINK =
+            "-fx-background-color: #880E4F;" +
             "-fx-text-fill: white;" +
             "-fx-font-weight: bold;";
 }
