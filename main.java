@@ -10,13 +10,11 @@ public class main {
         Dog dog1 = new Dog("Oreo", 3, "Chihuahua", false);
         
         ArrayList<Pet> petList = new ArrayList<>();
-        AdoptionCentre centre = new AdoptionCentre("PAC-MAN", petList);
         User user1 = new User("P01",new ArrayList<Pet>()); 
         
         centre.addPet(cat1);
         centre.addPet(dog1);
         
-        centre.showAvailablePets();
 
         centre.adoptPet(user1, cat1);
 
