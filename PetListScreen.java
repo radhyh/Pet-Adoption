@@ -39,7 +39,7 @@ public class PetListScreen {
 
         // table columns
         TableView<Pet> petTable = new TableView<>();
-        petTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        petTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
         TableColumn<Pet, String> nameCol = new TableColumn<>("Name");
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -63,7 +63,11 @@ public class PetListScreen {
             return new javafx.beans.property.SimpleStringProperty(status);
         });
 
-        petTable.getColumns().addAll(nameCol, breedCol, ageCol, typeCol, statusCol);
+        petTable.getColumns().add(nameCol);
+        petTable.getColumns().add(breedCol);
+        petTable.getColumns().add(ageCol);
+        petTable.getColumns().add(typeCol);
+        petTable.getColumns().add(statusCol);
 
         // load available pets into table
         petTable.getItems().addAll(centre.getAvailablePets());
