@@ -62,7 +62,7 @@ public class RegisterScreen {
 
         Button registerBtn = new Button("CREATE ACCOUNT");
         registerBtn.setFont(Font.font("Times New Roman", 14));
-        registerBtn.setStyle(BTN_GREEN);
+        registerBtn.setStyle(BTN_PINK);
         registerBtn.setMaxWidth(300);
 
 registerBtn.setOnAction(e -> {

@@ -104,11 +104,11 @@ public class AddPetScreen {
         // ── buttons ─────────────────────────────────────────
         Button backBtn = new Button("BACK");
         backBtn.setFont(Font.font("Times New Roman", 14));
-        backBtn.setStyle(BTN_RED);
+        backBtn.setStyle(BTN_DARK_PINK);
 
         Button addBtn = new Button("ADD PET");
         addBtn.setFont(Font.font("Times New Roman", 14));
-        addBtn.setStyle(BTN_GREEN);
+        addBtn.setStyle(BTN_PINK);
 
         backBtn.setOnAction(e -> {
             PetListScreen petList = new PetListScreen(centre, currentUser, stage);

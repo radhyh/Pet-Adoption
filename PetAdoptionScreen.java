@@ -142,8 +142,8 @@ public class PetAdoptionScreen {
         backBtn.setFont(Font.font("Times New Roman", 14));
         submitBtn.setFont(Font.font("Times New Roman", 14));
 
-        backBtn.setStyle(BTN_RED);
-        submitBtn.setStyle(BTN_GREEN);
+        backBtn.setStyle(BTN_DARK_PINK);
+        submitBtn.setStyle(BTN_PINK);
 
         backBtn.setOnAction(e -> {
             PetListScreen petList = new PetListScreen(centre, currentUser, stage);

@@ -79,7 +79,7 @@ public class PetListScreen {
         // ADOPT button — opens PetAdoptionScreen for selected pet
         Button adoptBtn = new Button("ADOPT SELECTED PET");
         adoptBtn.setFont(Font.font("Times New Roman", 14));
-        adoptBtn.setStyle(BTN_GREEN);
+        adoptBtn.setStyle(BTN_PINK);
 
         adoptBtn.setOnAction(e -> {
             Pet selected = petTable.getSelectionModel().getSelectedItem();
@@ -105,7 +105,7 @@ listCard.setStyle(CARD_STYLE);
 if (currentUser.isAdmin()) {
     Button addPetBtn = new Button("ADD PET");
     addPetBtn.setFont(Font.font("Times New Roman", 14));
-    addPetBtn.setStyle(BTN_GREEN);
+    addPetBtn.setStyle(BTN_PINK);
 
     addPetBtn.setOnAction(e -> {
         AddPetScreen addPet = new AddPetScreen(centre, currentUser, stage);
@@ -127,7 +127,7 @@ if (currentUser.isAdmin()) {
         // logout button
         Button logoutBtn = new Button("LOGOUT");
         logoutBtn.setFont(Font.font("Times New Roman", 14));
-        logoutBtn.setStyle(BTN_RED);
+        logoutBtn.setStyle(BTN_DARK_PINK);
 
         logoutBtn.setOnAction(e -> {
             LoginScreen login = new LoginScreen(centre, stage);

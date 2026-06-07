@@ -1,4 +1,0 @@
-Cat,Chipsmore,Siamese,2,true,true
-Dog,Oreo,Chihuahua,3,true,false
-Cat,Acheng,Domestic Shorthair,2,true,false
-Dog,Cemok,Bulldog,3,false,false

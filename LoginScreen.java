@@ -60,7 +60,7 @@ public class LoginScreen {
         // login button
         Button loginBtn = new Button("LOGIN");
         loginBtn.setFont(Font.font("Times New Roman", 14));
-        loginBtn.setStyle(BTN_GREEN);
+        loginBtn.setStyle(BTN_PINK);
         loginBtn.setMaxWidth(300);
 
 loginBtn.setOnAction(e -> {
