@@ -1,0 +1,2 @@
+Cat,Chipsmore,Siamese,2,false,true
+Dog,Oreo,Chihuahua,3,true,false
