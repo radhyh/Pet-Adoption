@@ -5,14 +5,12 @@ import java.util.ArrayList;
 
 public class User {
     
-    private String userId;
-    private String name;
+    private String username;
     private String password;
     private ArrayList<Pet> adoptedPets;
 
-    public User(String userId, String name, String password) {
-        this.userId = userId;
-        this.name = name;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
         this.adoptedPets = new ArrayList<>();
     }
@@ -31,8 +29,7 @@ public class User {
         return this.password.equals(input);
     }
 
-    public String getUserId()  { return userId; }
-    public String getName()    { return name; }
+    public String getUsername()  { return username; }
     public String getPassword(){ return password; }
     public ArrayList<Pet> getAdoptedPets() { return adoptedPets; }
 }

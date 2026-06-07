@@ -93,7 +93,7 @@ public class RegisterScreen {
 
             // check if user ID already taken
             for (User u : centre.getUsers()) {
-                if (u.getUserId().equals(userId)) {
+                if (u.getUsername().equals(userId)) {
                     statusLabel.setText("User ID already taken. Please choose another.");
                     statusLabel.setStyle("-fx-text-fill: red;");
                     return;
@@ -101,7 +101,7 @@ public class RegisterScreen {
             }
 
             // register new user
-            User newUser = new User(userId, name, pwd);
+            User newUser = new User(name, pwd);
             centre.getUsers().add(newUser);
             centre.saveUsers("users.txt");
 

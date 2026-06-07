@@ -88,7 +88,7 @@ public class AdoptionCentre {
     public void saveUsers(String filename) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
             for (User u : users) {
-                pw.println(u.getUserId() + "," + u.getName() + "," + u.getPassword());
+                pw.println(u.getUsername() + "," + "," + u.getPassword());
             }
         } 
         catch (IOException e) {
@@ -101,7 +101,7 @@ public class AdoptionCentre {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
-                users.add(new User(parts[0], parts[1], parts[2]));
+                users.add(new User(parts[0], parts[1]));
             }
         } 
         catch (IOException e) {

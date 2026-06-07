@@ -76,14 +76,14 @@ public class LoginScreen {
             // check if user exists and password matches
             User loggedInUser = null;
             for (User u : centre.getUsers()) {
-                if (u.getUserId().equals(enteredId) && u.checkPassword(enteredPwd)) {
+                if (u.getUsername().equals(enteredId) && u.checkPassword(enteredPwd)) {
                     loggedInUser = u;
                     break;
                 }
             }
 
             if (loggedInUser != null) {
-                statusLabel.setText("Login successful! Welcome, " + loggedInUser.getName());
+                statusLabel.setText("Login successful! Welcome, " + loggedInUser.getUsername());
                 statusLabel.setStyle("-fx-text-fill: green;");
 
                 // navigate to pet list screen

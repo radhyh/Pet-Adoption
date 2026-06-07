@@ -22,7 +22,7 @@ public class PetListScreen {
         appTitle.setFont(Font.font("Times New Roman", 30));
         appTitle.setStyle("-fx-font-weight: bold;");
 
-        Label welcomeLabel = new Label("Welcome, " + currentUser.getName() + "!");
+        Label welcomeLabel = new Label("Welcome, " + currentUser.getUsername() + "!");
         welcomeLabel.setFont(Font.font("Times New Roman", 14));
         welcomeLabel.setStyle("-fx-text-fill: grey;");
 

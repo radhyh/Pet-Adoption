@@ -16,7 +16,7 @@ public class main extends Application {
  
         // if no users saved yet, add a default one for testing
         if (centre.getUsers().isEmpty()) {
-            centre.getUsers().add(new User("U001", "Admin", "1234"));
+            centre.getUsers().add(new User("Admin", "1234"));
         }
  
         // if no pets saved yet, add some default ones for testing
@@ -35,4 +35,6 @@ public class main extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+
 }
