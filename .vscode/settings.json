@@ -1,6 +1,7 @@
 {
   // Add the JavaFX jars to the VS Code Java referenced libraries so the editor resolves imports
+  // Assumes you extracted the SDK zip to a folder named like the zip (remove .zip)
   "java.project.referencedLibraries": [
-    "C:\\javafx-sdk-20.0.2\\lib\\*.jar"
+    "C:\\Users\\HP\\Downloads\\openjfx-26.0.1_windows-x64_bin-sdk\\lib\\*.jar"
   ]
 }
