@@ -1,3 +1,6 @@
+/*Name: NUR ARFA NISRINA BINTI MOHD AIZURIZAM  
+  Matric Number: 2517666 */
+  
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -146,7 +149,7 @@ public class RegisterScreen {
         return scene;
     }
 
-    
+
     private static final String CARD_STYLE =
             "-fx-background-color: white;" +
             "-fx-border-color: #E91E8C;" +

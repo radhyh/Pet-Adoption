@@ -1,4 +1,5 @@
-/*Login Screen — PAC-MAN Pet Adoption Centre*/
+/*Name: NUR AUNI FAQIHAH BINTI DK SUFIAN 
+  Matric Number: 2517726 */
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
