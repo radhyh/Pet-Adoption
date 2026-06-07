@@ -1,5 +1,3 @@
-/*Register Screen — PAC-MAN Pet Adoption Centre*/
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,9 +12,6 @@ public class RegisterScreen {
 
     public RegisterScreen(AdoptionCentre centre, Stage stage) {
 
-        // ════════════════════════════════════════════════════
-        //  HEADER
-        // ════════════════════════════════════════════════════
         Label appTitle = new Label("PAC-MAN");
         appTitle.setFont(Font.font("Times New Roman", 40));
         appTitle.setStyle("-fx-font-weight: bold;");
@@ -32,9 +27,6 @@ public class RegisterScreen {
         header.setAlignment(Pos.CENTER);
 
 
-        // ════════════════════════════════════════════════════
-        //  REGISTER CARD
-        // ════════════════════════════════════════════════════
         Label registerTitle = new Label("REGISTER");
         registerTitle.setFont(Font.font("Times New Roman", 20));
         registerTitle.setStyle("-fx-font-weight: bold;");
@@ -64,54 +56,50 @@ public class RegisterScreen {
         registerBtn.setFont(Font.font("Times New Roman", 14));
         registerBtn.setStyle(BTN_PINK);
         registerBtn.setMaxWidth(300);
-
-registerBtn.setOnAction(e -> {
-    String name    = nameField.getText().trim();
-    String pwd     = passwordField.getText().trim();
-    String confirm = confirmField.getText().trim();
-
-    // validation — removed userId, only check name, pwd, confirm
-    if (name.isEmpty() || pwd.isEmpty() || confirm.isEmpty()) {
-        statusLabel.setText("Please fill in all fields.");
-        statusLabel.setStyle("-fx-text-fill: red;");
-        return;
-    }
-
-    if (!pwd.equals(confirm)) {
-        statusLabel.setText("Passwords do not match.");
-        statusLabel.setStyle("-fx-text-fill: red;");
-        confirmField.clear();
-        return;
-    }
-
-    // check if username already taken
-    for (User u : centre.getUsers()) {
-        if (u.getUsername().equals(name)) {
-            statusLabel.setText("Username already taken. Please choose another.");
-            statusLabel.setStyle("-fx-text-fill: red;");
-            return;
-        }
-    }
-
-    // register new user — username is the name they entered
-    User newUser = new User(name, pwd, "user");
-    centre.getUsers().add(newUser);
-    centre.saveUsers("users.txt");
-
-    statusLabel.setText("Account created! Redirecting to login...");
-    statusLabel.setStyle("-fx-text-fill: green;");
-
-    registerBtn.setDisable(true);
-    new Thread(() -> {
-        try { Thread.sleep(1500); } catch (InterruptedException ex) {}
-        javafx.application.Platform.runLater(() -> {
-            LoginScreen login = new LoginScreen(centre, stage);
-            stage.setScene(login.getScene());
+        
+        registerBtn.setOnAction(e -> {
+             String name    = nameField.getText().trim();
+             String pwd     = passwordField.getText().trim();
+             String confirm = confirmField.getText().trim();
+             
+             if (name.isEmpty() || pwd.isEmpty() || confirm.isEmpty()) {
+                statusLabel.setText("Please fill in all fields.");
+                statusLabel.setStyle("-fx-text-fill: red;");
+                return;
+            }
+            
+            if (!pwd.equals(confirm)) {
+                statusLabel.setText("Passwords do not match.");
+                statusLabel.setStyle("-fx-text-fill: red;");
+                confirmField.clear();
+                return;
+            }
+            
+            for (User u : centre.getUsers()) {
+                if (u.getUsername().equals(name)) {
+                    statusLabel.setText("Username already taken. Please choose another.");
+                    statusLabel.setStyle("-fx-text-fill: red;");
+                    return;
+                }
+            }
+            
+            User newUser = new User(name, pwd, "user");
+            centre.getUsers().add(newUser);
+            centre.saveUsers("users.txt");
+            
+            statusLabel.setText("Account created! Redirecting to login...");
+            statusLabel.setStyle("-fx-text-fill: green;");
+            
+            registerBtn.setDisable(true);
+            new Thread(() -> {
+                try { Thread.sleep(1500); } catch (InterruptedException ex) {}
+                javafx.application.Platform.runLater(() -> {
+                    LoginScreen login = new LoginScreen(centre, stage);
+                    stage.setScene(login.getScene());
+                });
+            }).start();
         });
-    }).start();
-});
-
-        // back to login
+        
         Separator separator = new Separator();
         separator.setMaxWidth(300);
 
@@ -146,9 +134,6 @@ registerBtn.setOnAction(e -> {
         registerCard.setStyle(CARD_STYLE);
 
 
-        // ════════════════════════════════════════════════════
-        //  ROOT LAYOUT
-        // ════════════════════════════════════════════════════
         VBox root = new VBox(30, header, registerCard);
         root.setPadding(new Insets(40));
         root.setAlignment(Pos.TOP_CENTER);
@@ -156,13 +141,12 @@ registerBtn.setOnAction(e -> {
 
         scene = new Scene(root, 700, 700);
     }
-
+    
     public Scene getScene() {
         return scene;
     }
 
-
-    // ── style constants ──────────────────────────────────────
+    
     private static final String CARD_STYLE =
             "-fx-background-color: white;" +
             "-fx-border-color: #E91E8C;" +

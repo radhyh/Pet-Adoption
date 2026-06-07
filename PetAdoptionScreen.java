@@ -66,7 +66,8 @@ public class PetAdoptionScreen {
 
             if (c.isIndoor()) {
                 indoorBtn.setSelected(true);
-            } else {
+            } 
+            else {
                 outdoorBtn.setSelected(true);
             }
 
@@ -77,7 +78,8 @@ public class PetAdoptionScreen {
             profileGrid.add(lblIndoor, 0, 3);
             profileGrid.add(typeBox,   1, 3);
 
-        } else if (pet instanceof Dog) {
+        } 
+        else if (pet instanceof Dog) {
             Dog d = (Dog) pet;
 
             Label lblTrained = new Label("Trained:");
@@ -159,11 +161,13 @@ public class PetAdoptionScreen {
                 statusLabel.setText("Please complete all fields.");
                 statusLabel.setStyle("-fx-text-fill: red;");
 
-            } else if (!pet.isAvailable()) {
+            } 
+            else if (!pet.isAvailable()) {
                 statusLabel.setText(pet.getName() + " is no longer available.");
                 statusLabel.setStyle("-fx-text-fill: red;");
 
-            } else {
+            } 
+            else {
                 centre.adoptPet(currentUser, pet);
 
                 statusLabel.setText("Adoption request submitted successfully!");

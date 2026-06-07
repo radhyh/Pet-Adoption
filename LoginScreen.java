@@ -14,9 +14,7 @@ public class LoginScreen {
 
     public LoginScreen(AdoptionCentre centre, Stage stage) {
 
-        // ════════════════════════════════════════════════════
-        //  HEADER
-        // ════════════════════════════════════════════════════
+      
         Label appTitle = new Label("PAC-MAN");
         appTitle.setFont(Font.font("Times New Roman", 40));
         appTitle.setStyle("-fx-font-weight: bold;");
@@ -32,76 +30,72 @@ public class LoginScreen {
         header.setAlignment(Pos.CENTER);
 
 
-        // ════════════════════════════════════════════════════
-        //  LOGIN CARD
-        // ════════════════════════════════════════════════════
         Label loginTitle = new Label("LOGIN");
         loginTitle.setFont(Font.font("Times New Roman", 20));
         loginTitle.setStyle("-fx-font-weight: bold;");
 
-        // user ID field
+     
         Label lblUserId = new Label("Username:");
         lblUserId.setFont(Font.font("Times New Roman", 14));
         TextField userIdField = new TextField();
         userIdField.setPromptText("Enter your Username");
         userIdField.setMaxWidth(300);
 
-        // password field
+
         Label lblPassword = new Label("Password:");
         lblPassword.setFont(Font.font("Times New Roman", 14));
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("Enter your password");
         passwordField.setMaxWidth(300);
 
-        // status message
+    
         Label statusLabel = new Label();
         statusLabel.setFont(Font.font("Times New Roman", 13));
 
-        // login button
+    
         Button loginBtn = new Button("LOGIN");
         loginBtn.setFont(Font.font("Times New Roman", 14));
         loginBtn.setStyle(BTN_PINK);
         loginBtn.setMaxWidth(300);
+        
+        loginBtn.setOnAction(e -> {
+            String enteredUsername = userIdField.getText().trim();
+            String enteredPwd = passwordField.getText().trim();
+            
+            if (enteredUsername.isEmpty() || enteredPwd.isEmpty()) {
+                statusLabel.setText("Please fill in all fields.");
+                statusLabel.setStyle("-fx-text-fill: red;");
+                return;
+            }
+            
+            User loggedInUser = null;
+            for (User u : centre.getUsers()) {
+                if (u.getUsername().equals(enteredUsername) && u.checkPassword(enteredPwd)) {
+                    loggedInUser = u;
+                    break;
+                }
+            }
+            
+            if (loggedInUser != null) {
+                statusLabel.setText("Login successful! Welcome, " + loggedInUser.getUsername());
+                statusLabel.setStyle("-fx-text-fill: green;");
+                
+                User finalUser = loggedInUser;
+                PetListScreen petList = new PetListScreen(centre, finalUser, stage);
+                stage.setScene(petList.getScene());
+            } 
+            else {
+                statusLabel.setText("Invalid username or password. Please try again.");
+                statusLabel.setStyle("-fx-text-fill: red;");
+                passwordField.clear();
+            }
+        });
 
-loginBtn.setOnAction(e -> {
-    String enteredUsername = userIdField.getText().trim();
-    String enteredPwd = passwordField.getText().trim();
 
-    if (enteredUsername.isEmpty() || enteredPwd.isEmpty()) {
-        statusLabel.setText("Please fill in all fields.");
-        statusLabel.setStyle("-fx-text-fill: red;");
-        return;
-    }
-
-    // check against username and password
-    User loggedInUser = null;
-    for (User u : centre.getUsers()) {
-        if (u.getUsername().equals(enteredUsername) && u.checkPassword(enteredPwd)) {
-            loggedInUser = u;
-            break;
-        }
-    }
-
-    if (loggedInUser != null) {
-        statusLabel.setText("Login successful! Welcome, " + loggedInUser.getUsername());
-        statusLabel.setStyle("-fx-text-fill: green;");
-
-        User finalUser = loggedInUser;
-        PetListScreen petList = new PetListScreen(centre, finalUser, stage);
-        stage.setScene(petList.getScene());
-
-    } else {
-        statusLabel.setText("Invalid username or password. Please try again.");
-        statusLabel.setStyle("-fx-text-fill: red;");
-        passwordField.clear();
-    }
-});
-
-        // divider line between login and register
         Separator separator = new Separator();
         separator.setMaxWidth(300);
 
-        // register section
+        
         Label registerLabel = new Label("Don't have an account?");
         registerLabel.setFont(Font.font("Times New Roman", 13));
         registerLabel.setStyle("-fx-text-fill: grey;");
@@ -132,9 +126,6 @@ loginBtn.setOnAction(e -> {
         loginCard.setStyle(CARD_STYLE);
 
 
-        // ════════════════════════════════════════════════════
-        //  ROOT LAYOUT
-        // ════════════════════════════════════════════════════
         VBox root = new VBox(30, header, loginCard);
         root.setPadding(new Insets(40));
         root.setAlignment(Pos.TOP_CENTER);
@@ -148,7 +139,6 @@ loginBtn.setOnAction(e -> {
     }
 
 
-    // ── style constants ──────────────────────────────────────
     private static final String CARD_STYLE =
             "-fx-background-color: white;" +
             "-fx-border-color: #E91E8C;" +

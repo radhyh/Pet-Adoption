@@ -15,8 +15,7 @@ public class Pet {
     }
 
     public void displayInfo() {
-        System.out.printf("Name: " + name + "\nBreed: " + breed + 
-                           "\nAge: " + age + "\n");
+        System.out.printf("Name: " + name + "\nBreed: " + breed + "\nAge: " + age + "\n");
     }
 
     public boolean isAvailable() {

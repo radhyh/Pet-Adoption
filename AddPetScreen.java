@@ -12,7 +12,6 @@ public class AddPetScreen {
 
     public AddPetScreen(AdoptionCentre centre, User currentUser, Stage stage) {
 
-        // ── header ──────────────────────────────────────────
         Label appTitle = new Label("PAC-MAN");
         appTitle.setFont(Font.font("Times New Roman", 30));
         appTitle.setStyle("-fx-font-weight: bold;");
@@ -23,12 +22,12 @@ public class AddPetScreen {
         VBox header = new VBox(5, appTitle, appSubtitle);
         header.setAlignment(Pos.CENTER);
 
-        // ── form card ───────────────────────────────────────
+
         Label formTitle = new Label("ADD NEW PET");
         formTitle.setFont(Font.font("Times New Roman", 18));
         formTitle.setStyle("-fx-font-weight: bold;");
 
-        // pet type selector
+        
         Label lblType = new Label("Pet Type:");
         lblType.setFont(Font.font("Times New Roman", 14));
 
@@ -37,28 +36,28 @@ public class AddPetScreen {
         typeBox.setPromptText("Select Type");
         typeBox.setMaxWidth(300);
 
-        // name
+       
         Label lblName = new Label("Name:");
         lblName.setFont(Font.font("Times New Roman", 14));
         TextField nameField = new TextField();
         nameField.setPromptText("Enter pet name");
         nameField.setMaxWidth(300);
 
-        // breed
+        
         Label lblBreed = new Label("Breed:");
         lblBreed.setFont(Font.font("Times New Roman", 14));
         TextField breedField = new TextField();
         breedField.setPromptText("Enter breed");
         breedField.setMaxWidth(300);
 
-        // age
+        
         Label lblAge = new Label("Age:");
         lblAge.setFont(Font.font("Times New Roman", 14));
         TextField ageField = new TextField();
         ageField.setPromptText("Enter age");
         ageField.setMaxWidth(300);
 
-        // extra field — changes based on type selected
+        
         Label lblExtra = new Label("Indoor:");
         lblExtra.setFont(Font.font("Times New Roman", 14));
 
@@ -74,7 +73,7 @@ public class AddPetScreen {
 
         HBox extraBox = new HBox(15, yesBtn, noBtn);
 
-        // change label when type changes
+        
         typeBox.setOnAction(e -> {
             if (typeBox.getValue() != null) {
                 if (typeBox.getValue().equals("Cat")) {
@@ -101,7 +100,7 @@ public class AddPetScreen {
         formCard.setPadding(new Insets(20));
         formCard.setStyle(CARD_STYLE);
 
-        // ── buttons ─────────────────────────────────────────
+
         Button backBtn = new Button("BACK");
         backBtn.setFont(Font.font("Times New Roman", 14));
         backBtn.setStyle(BTN_DARK_PINK);
@@ -122,14 +121,14 @@ public class AddPetScreen {
             String ageText = ageField.getText().trim();
             boolean extraValue = yesBtn.isSelected();
 
-            // validation
+            
             if (type == null || name.isEmpty() || breed.isEmpty() || ageText.isEmpty()) {
                 statusLabel.setText("Please fill in all fields.");
                 statusLabel.setStyle("-fx-text-fill: red;");
                 return;
             }
 
-            // check age is a number
+            
             int age;
             try {
                 age = Integer.parseInt(ageText);
@@ -139,20 +138,20 @@ public class AddPetScreen {
                 return;
             }
 
-            // create the right pet type
+            
             if (type.equals("Cat")) {
                 centre.addPet(new Cat(name, age, breed, extraValue));
             } else {
                 centre.addPet(new Dog(name, age, breed, extraValue));
             }
 
-            // save to file
+            
             centre.savePets("pets.txt");
 
             statusLabel.setText(name + " added successfully!");
             statusLabel.setStyle("-fx-text-fill: green;");
 
-            // clear form
+            
             nameField.clear();
             breedField.clear();
             ageField.clear();
@@ -163,7 +162,7 @@ public class AddPetScreen {
         HBox buttonBox = new HBox(20, backBtn, addBtn);
         buttonBox.setAlignment(Pos.CENTER);
 
-        // ── root layout ─────────────────────────────────────
+        
         VBox root = new VBox(20, header, formCard, buttonBox);
         root.setPadding(new Insets(25));
         root.setAlignment(Pos.TOP_CENTER);

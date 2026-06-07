@@ -15,9 +15,7 @@ public class PetListScreen {
 
     public PetListScreen(AdoptionCentre centre, User currentUser, Stage stage) {
 
-        // ════════════════════════════════════════════════════
-        //  HEADER
-        // ════════════════════════════════════════════════════
+        
         Label appTitle = new Label("PAC-MAN");
         appTitle.setFont(Font.font("Times New Roman", 30));
         appTitle.setStyle("-fx-font-weight: bold;");
@@ -30,14 +28,11 @@ public class PetListScreen {
         header.setAlignment(Pos.CENTER);
 
 
-        // ════════════════════════════════════════════════════
-        //  PET LIST CARD — TableView showing available pets
-        // ════════════════════════════════════════════════════
         Label listTitle = new Label("AVAILABLE PETS");
         listTitle.setFont(Font.font("Times New Roman", 18));
         listTitle.setStyle("-fx-font-weight: bold;");
 
-        // table columns
+       
         TableView<Pet> petTable = new TableView<>();
         petTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
@@ -69,14 +64,13 @@ public class PetListScreen {
         petTable.getColumns().add(typeCol);
         petTable.getColumns().add(statusCol);
 
-        // load available pets into table
+    
         petTable.getItems().addAll(centre.getAvailablePets());
         petTable.setPrefHeight(250);
 
         Label statusLabel = new Label();
         statusLabel.setFont(Font.font("Times New Roman", 13));
 
-        // ADOPT button — opens PetAdoptionScreen for selected pet
         Button adoptBtn = new Button("ADOPT SELECTED PET");
         adoptBtn.setFont(Font.font("Times New Roman", 14));
         adoptBtn.setStyle(BTN_PINK);
@@ -91,40 +85,32 @@ public class PetListScreen {
                 PetAdoptionScreen adoptScreen = new PetAdoptionScreen(
                         selected, centre, currentUser, stage);
                 stage.setScene(adoptScreen.getScene());
-            }
-
-            
+            }   
         });
+        
+        VBox listCard = new VBox(15, listTitle, petTable, statusLabel);
+        listCard.setPadding(new Insets(20));
+        listCard.setStyle(CARD_STYLE);
+        
+        if (currentUser.isAdmin()) {
+            Button addPetBtn = new Button("ADD PET");
+            addPetBtn.setFont(Font.font("Times New Roman", 14));
+            addPetBtn.setStyle(BTN_PINK);
+            
+            addPetBtn.setOnAction(e -> {
+                AddPetScreen addPet = new AddPetScreen(centre, currentUser, stage);
+                stage.setScene(addPet.getScene());
+            });
+            
+            HBox btnBox = new HBox(15, adoptBtn, addPetBtn);
+            btnBox.setAlignment(Pos.CENTER);
+            listCard.getChildren().add(btnBox);
+        } 
+        else {
+            listCard.getChildren().add(adoptBtn);
+        }
 
-        // remove adoptBtn from here — we add it conditionally below
-VBox listCard = new VBox(15, listTitle, petTable, statusLabel);
-listCard.setPadding(new Insets(20));
-listCard.setStyle(CARD_STYLE);
 
-// add buttons based on role
-if (currentUser.isAdmin()) {
-    Button addPetBtn = new Button("ADD PET");
-    addPetBtn.setFont(Font.font("Times New Roman", 14));
-    addPetBtn.setStyle(BTN_PINK);
-
-    addPetBtn.setOnAction(e -> {
-        AddPetScreen addPet = new AddPetScreen(centre, currentUser, stage);
-        stage.setScene(addPet.getScene());
-    });
-
-    HBox btnBox = new HBox(15, adoptBtn, addPetBtn);
-    btnBox.setAlignment(Pos.CENTER);
-    listCard.getChildren().add(btnBox);
-} else {
-    listCard.getChildren().add(adoptBtn);
-}
-
-
-        // ════════════════════════════════════════════════════
-        //  BOTTOM BUTTONS
-        // ════════════════════════════════════════════════════
-
-        // logout button
         Button logoutBtn = new Button("LOGOUT");
         logoutBtn.setFont(Font.font("Times New Roman", 14));
         logoutBtn.setStyle(BTN_DARK_PINK);
@@ -138,9 +124,6 @@ if (currentUser.isAdmin()) {
         bottomBox.setAlignment(Pos.CENTER_RIGHT);
 
 
-        // ════════════════════════════════════════════════════
-        //  ROOT LAYOUT
-        // ════════════════════════════════════════════════════
         VBox root = new VBox(20, header, listCard, bottomBox);
         root.setPadding(new Insets(25));
         root.setAlignment(Pos.TOP_CENTER);
@@ -154,7 +137,6 @@ if (currentUser.isAdmin()) {
     }
 
 
-    // ── style constants ──────────────────────────────────────
     private static final String CARD_STYLE =
             "-fx-background-color: white;" +
             "-fx-border-color: #E91E8C;" +
