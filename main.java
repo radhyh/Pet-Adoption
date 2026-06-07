@@ -1,30 +1,38 @@
 /*All Member*/
-import java.util.ArrayList;
-
-public class main {
+import javafx.application.Application;
+import javafx.stage.Stage;
+ 
+public class main extends Application {
+ 
+    @Override
+    public void start(Stage stage) {
+ 
+        // create the AdoptionCentre — shared across all screens
+        AdoptionCentre centre = new AdoptionCentre();
+ 
+        // load saved data from files if they exist
+        centre.loadPets("pets.txt");
+        centre.loadUsers("users.txt");
+ 
+        // if no users saved yet, add a default one for testing
+        if (centre.getUsers().isEmpty()) {
+            centre.getUsers().add(new User("U001", "Admin", "1234"));
+        }
+ 
+        // if no pets saved yet, add some default ones for testing
+        if (centre.getAllPets().isEmpty()) {
+            centre.addPet(new Cat("Chipsmore", 2, "Siamese", true));
+            centre.addPet(new Dog("Oreo", 3, "Chihuahua", false));
+        }
+ 
+        // start with login screen
+        LoginScreen loginScreen = new LoginScreen(centre, stage);
+        stage.setScene(loginScreen.getScene());
+        stage.setTitle("PAC-MAN - Pet Adoption Centre Management");
+        stage.show();
+    }
+ 
     public static void main(String[] args) {
-
-        System.out.println("Welcome to PAC-MAN, your Pet Adoption Centre Management!");
-    
-        Cat cat1 = new Cat("Chipsmore", 2, "Siamese", true);
-        Dog dog1 = new Dog("Oreo", 3, "Chihuahua", false);
-        
-        ArrayList<Pet> petList = new ArrayList<>();
-        User user1 = new User("P01",new ArrayList<Pet>()); 
-        
-        centre.addPet(cat1);
-        centre.addPet(dog1);
-        
-
-        centre.adoptPet(user1, cat1);
-
-        
-        
-
-
-
-
-
-
+        launch();
     }
 }

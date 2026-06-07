@@ -2,6 +2,16 @@
   // Add the JavaFX jars to the VS Code Java referenced libraries so the editor resolves imports
   // Assumes you extracted the SDK zip to a folder named like the zip (remove .zip)
   "java.project.referencedLibraries": [
-    "C:\\Users\\HP\\Downloads\\openjfx-26.0.1_windows-x64_bin-sdk\\lib\\*.jar"
+    "c:\\Users\\HP\\Downloads\\openjfx-21.0.11_windows-x64_bin-sdk\\javafx-sdk-21.0.11\\lib\\javafx.base.jar",
+    "c:\\Users\\HP\\Downloads\\openjfx-21.0.11_windows-x64_bin-sdk\\javafx-sdk-21.0.11\\lib\\javafx.controls.jar",
+    "c:\\Users\\HP\\Downloads\\openjfx-21.0.11_windows-x64_bin-sdk\\javafx-sdk-21.0.11\\lib\\javafx.fxml.jar",
+    "c:\\Users\\HP\\Downloads\\openjfx-21.0.11_windows-x64_bin-sdk\\javafx-sdk-21.0.11\\lib\\javafx.graphics.jar",
+    "c:\\Users\\HP\\Downloads\\openjfx-21.0.11_windows-x64_bin-sdk\\javafx-sdk-21.0.11\\lib\\javafx.media.jar",
+    "c:\\Users\\HP\\Downloads\\openjfx-21.0.11_windows-x64_bin-sdk\\javafx-sdk-21.0.11\\lib\\javafx.swing.jar",
+    "c:\\Users\\HP\\Downloads\\openjfx-21.0.11_windows-x64_bin-sdk\\javafx-sdk-21.0.11\\lib\\javafx.web.jar",
+    "c:\\Users\\HP\\Downloads\\openjfx-21.0.11_windows-x64_bin-sdk\\javafx-sdk-21.0.11\\lib\\javafx-swt.jar"
+  ],
+  "java.project.sourcePaths": [
+    "."
   ]
 }

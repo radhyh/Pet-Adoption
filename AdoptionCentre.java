@@ -83,6 +83,29 @@ public class AdoptionCentre {
         catch (IOException e) {
             System.out.println("No saved data found.");
         }
-    
+    }
 
+    public void saveUsers(String filename) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
+            for (User u : users) {
+                pw.println(u.getUserId() + "," + u.getName() + "," + u.getPassword());
+            }
+        } 
+        catch (IOException e) {
+            System.out.println("Error saving users: " + e.getMessage());
+        }
+    }
+
+    public void loadUsers(String filename) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                users.add(new User(parts[0], parts[1], parts[2]));
+            }
+        } 
+        catch (IOException e) {
+            System.out.println("No saved users found, starting fresh.");
+        }
+    }
 }

@@ -1,0 +1,194 @@
+/*Register Screen — PAC-MAN Pet Adoption Centre*/
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class RegisterScreen {
+
+    private Scene scene;
+
+    public RegisterScreen(AdoptionCentre centre, Stage stage) {
+
+        // ════════════════════════════════════════════════════
+        //  HEADER
+        // ════════════════════════════════════════════════════
+        Label appTitle = new Label("PAC-MAN");
+        appTitle.setFont(Font.font("Times New Roman", 40));
+        appTitle.setStyle("-fx-font-weight: bold;");
+
+        Label appSubtitle = new Label("Pet Adoption Centre Management");
+        appSubtitle.setFont(Font.font("Times New Roman", 14));
+
+        Label registerHeader = new Label("Create a new account to get started.");
+        registerHeader.setFont(Font.font("Times New Roman", 13));
+        registerHeader.setStyle("-fx-text-fill: grey;");
+
+        VBox header = new VBox(8, appTitle, appSubtitle, registerHeader);
+        header.setAlignment(Pos.CENTER);
+
+
+        // ════════════════════════════════════════════════════
+        //  REGISTER CARD
+        // ════════════════════════════════════════════════════
+        Label registerTitle = new Label("REGISTER");
+        registerTitle.setFont(Font.font("Times New Roman", 20));
+        registerTitle.setStyle("-fx-font-weight: bold;");
+
+        Label lblName = new Label("Full Name:");
+        lblName.setFont(Font.font("Times New Roman", 14));
+        TextField nameField = new TextField();
+        nameField.setPromptText("Enter your full name");
+        nameField.setMaxWidth(300);
+
+        Label lblUserId = new Label("User ID:");
+        lblUserId.setFont(Font.font("Times New Roman", 14));
+        TextField userIdField = new TextField();
+        userIdField.setPromptText("Create a User ID");
+        userIdField.setMaxWidth(300);
+
+        Label lblPassword = new Label("Password:");
+        lblPassword.setFont(Font.font("Times New Roman", 14));
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Create a password");
+        passwordField.setMaxWidth(300);
+
+        Label lblConfirm = new Label("Confirm Password:");
+        lblConfirm.setFont(Font.font("Times New Roman", 14));
+        PasswordField confirmField = new PasswordField();
+        confirmField.setPromptText("Re-enter your password");
+        confirmField.setMaxWidth(300);
+
+        Label statusLabel = new Label();
+        statusLabel.setFont(Font.font("Times New Roman", 13));
+
+        Button registerBtn = new Button("CREATE ACCOUNT");
+        registerBtn.setFont(Font.font("Times New Roman", 14));
+        registerBtn.setStyle(BTN_GREEN);
+        registerBtn.setMaxWidth(300);
+
+        registerBtn.setOnAction(e -> {
+            String name    = nameField.getText().trim();
+            String userId  = userIdField.getText().trim();
+            String pwd     = passwordField.getText().trim();
+            String confirm = confirmField.getText().trim();
+
+            // validation
+            if (name.isEmpty() || userId.isEmpty() || pwd.isEmpty() || confirm.isEmpty()) {
+                statusLabel.setText("Please fill in all fields.");
+                statusLabel.setStyle("-fx-text-fill: red;");
+                return;
+            }
+
+            if (!pwd.equals(confirm)) {
+                statusLabel.setText("Passwords do not match.");
+                statusLabel.setStyle("-fx-text-fill: red;");
+                confirmField.clear();
+                return;
+            }
+
+            // check if user ID already taken
+            for (User u : centre.getUsers()) {
+                if (u.getUserId().equals(userId)) {
+                    statusLabel.setText("User ID already taken. Please choose another.");
+                    statusLabel.setStyle("-fx-text-fill: red;");
+                    return;
+                }
+            }
+
+            // register new user
+            User newUser = new User(userId, name, pwd);
+            centre.getUsers().add(newUser);
+            centre.saveUsers("users.txt");
+
+            statusLabel.setText("Account created! Redirecting to login...");
+            statusLabel.setStyle("-fx-text-fill: green;");
+
+            // go back to login screen after short delay
+            registerBtn.setDisable(true);
+            new Thread(() -> {
+                try { Thread.sleep(1500); } catch (InterruptedException ex) {}
+                javafx.application.Platform.runLater(() -> {
+                    LoginScreen login = new LoginScreen(centre, stage);
+                    stage.setScene(login.getScene());
+                });
+            }).start();
+        });
+
+        // back to login
+        Separator separator = new Separator();
+        separator.setMaxWidth(300);
+
+        Label alreadyLabel = new Label("Already have an account?");
+        alreadyLabel.setFont(Font.font("Times New Roman", 13));
+        alreadyLabel.setStyle("-fx-text-fill: grey;");
+
+        Button backLoginBtn = new Button("BACK TO LOGIN");
+        backLoginBtn.setFont(Font.font("Times New Roman", 13));
+        backLoginBtn.setStyle(BTN_OUTLINE);
+
+        backLoginBtn.setOnAction(e -> {
+            LoginScreen login = new LoginScreen(centre, stage);
+            stage.setScene(login.getScene());
+        });
+
+        VBox registerCard = new VBox(15,
+                registerTitle,
+                lblName,     nameField,
+                lblUserId,   userIdField,
+                lblPassword, passwordField,
+                lblConfirm,  confirmField,
+                registerBtn,
+                statusLabel,
+                separator,
+                alreadyLabel,
+                backLoginBtn
+        );
+
+        registerCard.setAlignment(Pos.CENTER_LEFT);
+        registerCard.setPadding(new Insets(30));
+        registerCard.setMaxWidth(400);
+        registerCard.setStyle(CARD_STYLE);
+
+
+        // ════════════════════════════════════════════════════
+        //  ROOT LAYOUT
+        // ════════════════════════════════════════════════════
+        VBox root = new VBox(30, header, registerCard);
+        root.setPadding(new Insets(40));
+        root.setAlignment(Pos.TOP_CENTER);
+        root.setStyle("-fx-background-color: #F5F5F5;");
+
+        scene = new Scene(root, 700, 700);
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+
+    // ── style constants ──────────────────────────────────────
+    private static final String CARD_STYLE =
+            "-fx-background-color: white;" +
+            "-fx-border-color: black;" +
+            "-fx-border-width: 1;" +
+            "-fx-border-radius: 15;" +
+            "-fx-background-radius: 15;";
+
+    private static final String BTN_GREEN =
+            "-fx-background-color: #388E3C;" +
+            "-fx-text-fill: white;" +
+            "-fx-font-weight: bold;";
+
+    private static final String BTN_OUTLINE =
+            "-fx-background-color: transparent;" +
+            "-fx-border-color: #388E3C;" +
+            "-fx-border-width: 1;" +
+            "-fx-border-radius: 5;" +
+            "-fx-text-fill: #388E3C;" +
+            "-fx-font-weight: bold;";
+}
