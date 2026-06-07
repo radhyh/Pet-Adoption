@@ -63,40 +63,39 @@ public class LoginScreen {
         loginBtn.setStyle(BTN_GREEN);
         loginBtn.setMaxWidth(300);
 
-        loginBtn.setOnAction(e -> {
-            String enteredId  = userIdField.getText().trim();
-            String enteredPwd = passwordField.getText().trim();
+loginBtn.setOnAction(e -> {
+    String enteredUsername = userIdField.getText().trim();
+    String enteredPwd = passwordField.getText().trim();
 
-            if (enteredId.isEmpty() || enteredPwd.isEmpty()) {
-                statusLabel.setText("Please fill in all fields.");
-                statusLabel.setStyle("-fx-text-fill: red;");
-                return;
-            }
+    if (enteredUsername.isEmpty() || enteredPwd.isEmpty()) {
+        statusLabel.setText("Please fill in all fields.");
+        statusLabel.setStyle("-fx-text-fill: red;");
+        return;
+    }
 
-            // check if user exists and password matches
-            User loggedInUser = null;
-            for (User u : centre.getUsers()) {
-                if (u.getUsername().equals(enteredId) && u.checkPassword(enteredPwd)){
-                    loggedInUser = u;
-                    break;
-                }
-            }
+    // check against username and password
+    User loggedInUser = null;
+    for (User u : centre.getUsers()) {
+        if (u.getUsername().equals(enteredUsername) && u.checkPassword(enteredPwd)) {
+            loggedInUser = u;
+            break;
+        }
+    }
 
-            if (loggedInUser != null) {
-                statusLabel.setText("Login successful! Welcome, " + loggedInUser.getUsername());
-                statusLabel.setStyle("-fx-text-fill: green;");
+    if (loggedInUser != null) {
+        statusLabel.setText("Login successful! Welcome, " + loggedInUser.getUsername());
+        statusLabel.setStyle("-fx-text-fill: green;");
 
-                // navigate to pet list screen
-                User finalUser = loggedInUser;
-                PetListScreen petList = new PetListScreen(centre, finalUser, stage);
-                stage.setScene(petList.getScene());
+        User finalUser = loggedInUser;
+        PetListScreen petList = new PetListScreen(centre, finalUser, stage);
+        stage.setScene(petList.getScene());
 
-            } else {
-                statusLabel.setText("Invalid User ID or Password. Please try again.");
-                statusLabel.setStyle("-fx-text-fill: red;");
-                passwordField.clear();
-            }
-        });
+    } else {
+        statusLabel.setText("Invalid username or password. Please try again.");
+        statusLabel.setStyle("-fx-text-fill: red;");
+        passwordField.clear();
+    }
+});
 
         // divider line between login and register
         Separator separator = new Separator();
