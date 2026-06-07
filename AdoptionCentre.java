@@ -49,7 +49,7 @@ public class AdoptionCentre {
     }
 
     public void savePets(String filename) {
-        try (PrintWriter pw = new PrintWriter(new FileWriter("adoption_data.txt"))) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
             for (Pet p : pets) {
                 if (p instanceof Dog) {
                     Dog d = (Dog) p;
@@ -67,7 +67,7 @@ public class AdoptionCentre {
     }
     
     public void loadPets(String filename) {
-        try (BufferedReader br = new BufferedReader(new FileReader("adoption_data.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -88,7 +88,7 @@ public class AdoptionCentre {
     public void saveUsers(String filename) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
             for (User u : users) {
-                pw.println(u.getUsername() + "," + "," + u.getPassword());
+                pw.println(u.getUsername() + "," + u.getPassword());
             }
         } 
         catch (IOException e) {

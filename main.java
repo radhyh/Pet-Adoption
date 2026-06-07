@@ -9,8 +9,10 @@ public class main extends Application {
  
         // create the AdoptionCentre — shared across all screens
         AdoptionCentre centre = new AdoptionCentre();
- 
-        // load saved data from files if they exist
+        
+        centre.savePets("pets.txt");
+        centre.saveUsers("users.txt");
+        
         centre.loadPets("pets.txt");
         centre.loadUsers("users.txt");
  
