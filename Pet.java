@@ -14,10 +14,6 @@ public class Pet {
         this.age = age;
     }
 
-    public void Sound(){
-        System.out.print("Pet makes a sound: ");
-    }
-
     public void displayInfo() {
         System.out.printf("Name: " + name + "\nBreed: " + breed + 
                            "\nAge: " + age + "\n");

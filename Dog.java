@@ -10,11 +10,7 @@ public class Dog extends Pet {
        super(name, breed, age);
        this.trained= trained;
     }
-    @Override
-    public void Sound(){
-        super.Sound();
-        System.out.print("woof");
-    }
+
     public boolean isTrained(){
         return trained;
     }

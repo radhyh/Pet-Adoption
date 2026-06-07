@@ -9,12 +9,6 @@ public class Cat extends Pet {
      this.indoor = indoor;
     }
     
-    @Override
-    public void Sound(){
-        super.Sound();
-        System.out.print("Meow");
-    }
-    
     public boolean isIndoor(){
         return indoor;
     }
