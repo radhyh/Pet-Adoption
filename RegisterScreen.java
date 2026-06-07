@@ -39,17 +39,11 @@ public class RegisterScreen {
         registerTitle.setFont(Font.font("Times New Roman", 20));
         registerTitle.setStyle("-fx-font-weight: bold;");
 
-        Label lblName = new Label("Full Name:");
+        Label lblName = new Label("Userame:");
         lblName.setFont(Font.font("Times New Roman", 14));
         TextField nameField = new TextField();
-        nameField.setPromptText("Enter your full name");
+        nameField.setPromptText("Create a username");
         nameField.setMaxWidth(300);
-
-        Label lblUserId = new Label("User ID:");
-        lblUserId.setFont(Font.font("Times New Roman", 14));
-        TextField userIdField = new TextField();
-        userIdField.setPromptText("Create a User ID");
-        userIdField.setMaxWidth(300);
 
         Label lblPassword = new Label("Password:");
         lblPassword.setFont(Font.font("Times New Roman", 14));
@@ -71,53 +65,51 @@ public class RegisterScreen {
         registerBtn.setStyle(BTN_GREEN);
         registerBtn.setMaxWidth(300);
 
-        registerBtn.setOnAction(e -> {
-            String name    = nameField.getText().trim();
-            String userId  = userIdField.getText().trim();
-            String pwd     = passwordField.getText().trim();
-            String confirm = confirmField.getText().trim();
+registerBtn.setOnAction(e -> {
+    String name    = nameField.getText().trim();
+    String pwd     = passwordField.getText().trim();
+    String confirm = confirmField.getText().trim();
 
-            // validation
-            if (name.isEmpty() || userId.isEmpty() || pwd.isEmpty() || confirm.isEmpty()) {
-                statusLabel.setText("Please fill in all fields.");
-                statusLabel.setStyle("-fx-text-fill: red;");
-                return;
-            }
+    // validation — removed userId, only check name, pwd, confirm
+    if (name.isEmpty() || pwd.isEmpty() || confirm.isEmpty()) {
+        statusLabel.setText("Please fill in all fields.");
+        statusLabel.setStyle("-fx-text-fill: red;");
+        return;
+    }
 
-            if (!pwd.equals(confirm)) {
-                statusLabel.setText("Passwords do not match.");
-                statusLabel.setStyle("-fx-text-fill: red;");
-                confirmField.clear();
-                return;
-            }
+    if (!pwd.equals(confirm)) {
+        statusLabel.setText("Passwords do not match.");
+        statusLabel.setStyle("-fx-text-fill: red;");
+        confirmField.clear();
+        return;
+    }
 
-            // check if user ID already taken
-            for (User u : centre.getUsers()) {
-                if (u.getUsername().equals(userId)) {
-                    statusLabel.setText("User ID already taken. Please choose another.");
-                    statusLabel.setStyle("-fx-text-fill: red;");
-                    return;
-                }
-            }
+    // check if username already taken
+    for (User u : centre.getUsers()) {
+        if (u.getUsername().equals(name)) {
+            statusLabel.setText("Username already taken. Please choose another.");
+            statusLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+    }
 
-            // register new user
-            User newUser = new User(name, pwd);
-            centre.getUsers().add(newUser);
-            centre.saveUsers("users.txt");
+    // register new user — username is the name they entered
+    User newUser = new User(name, pwd);
+    centre.getUsers().add(newUser);
+    centre.saveUsers("users.txt");
 
-            statusLabel.setText("Account created! Redirecting to login...");
-            statusLabel.setStyle("-fx-text-fill: green;");
+    statusLabel.setText("Account created! Redirecting to login...");
+    statusLabel.setStyle("-fx-text-fill: green;");
 
-            // go back to login screen after short delay
-            registerBtn.setDisable(true);
-            new Thread(() -> {
-                try { Thread.sleep(1500); } catch (InterruptedException ex) {}
-                javafx.application.Platform.runLater(() -> {
-                    LoginScreen login = new LoginScreen(centre, stage);
-                    stage.setScene(login.getScene());
-                });
-            }).start();
+    registerBtn.setDisable(true);
+    new Thread(() -> {
+        try { Thread.sleep(1500); } catch (InterruptedException ex) {}
+        javafx.application.Platform.runLater(() -> {
+            LoginScreen login = new LoginScreen(centre, stage);
+            stage.setScene(login.getScene());
         });
+    }).start();
+});
 
         // back to login
         Separator separator = new Separator();
@@ -139,7 +131,6 @@ public class RegisterScreen {
         VBox registerCard = new VBox(15,
                 registerTitle,
                 lblName,     nameField,
-                lblUserId,   userIdField,
                 lblPassword, passwordField,
                 lblConfirm,  confirmField,
                 registerBtn,
@@ -192,3 +183,4 @@ public class RegisterScreen {
             "-fx-text-fill: #388E3C;" +
             "-fx-font-weight: bold;";
 }
+

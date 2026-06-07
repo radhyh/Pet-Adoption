@@ -40,10 +40,10 @@ public class LoginScreen {
         loginTitle.setStyle("-fx-font-weight: bold;");
 
         // user ID field
-        Label lblUserId = new Label("User ID:");
+        Label lblUserId = new Label("Username:");
         lblUserId.setFont(Font.font("Times New Roman", 14));
         TextField userIdField = new TextField();
-        userIdField.setPromptText("Enter your User ID");
+        userIdField.setPromptText("Enter your Username");
         userIdField.setMaxWidth(300);
 
         // password field
@@ -76,7 +76,7 @@ public class LoginScreen {
             // check if user exists and password matches
             User loggedInUser = null;
             for (User u : centre.getUsers()) {
-                if (u.getUsername().equals(enteredId) && u.checkPassword(enteredPwd)) {
+                if (u.getUsername().equals(enteredId) && u.checkPassword(enteredPwd)){
                     loggedInUser = u;
                     break;
                 }

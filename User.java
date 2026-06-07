@@ -29,7 +29,7 @@ public class User {
         return this.password.equals(input);
     }
 
-    public String getUsername()  { return username; }
-    public String getPassword(){ return password; }
+    public String getUsername() { return username; }
+    public String getPassword() { return password; }
     public ArrayList<Pet> getAdoptedPets() { return adoptedPets; }
 }
