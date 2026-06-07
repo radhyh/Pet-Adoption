@@ -1,0 +1,6 @@
+{
+  // Add the JavaFX jars to the VS Code Java referenced libraries so the editor resolves imports
+  "java.project.referencedLibraries": [
+    "C:\\javafx-sdk-20.0.2\\lib\\*.jar"
+  ]
+}
