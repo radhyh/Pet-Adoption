@@ -1,2 +1,2 @@
 Admin,1234,admin
-tomato,1234,user
+cute,aaa,user
