@@ -24,23 +24,24 @@ PAC-MAN is a desktop application that allows users to browse and adopt pets from
 - Pink and white themed JavaFX GUI
 
  # Project Structure
- PAC-MAN : the system
-- Pet.java: base class for all pets
-- Cat.java : extends Pet, adds indoor attribute
-- Dog.java : extends Pet, adds trained attribute
--  User.java : stores user credentials and adopted pets
-- AdoptionCentre.java : manages pets and users, handles file I/O
-- main.java : launches the application
-- LoginScreen.java : login screen GUI
-- RegisterScreen.java : register screen GUI
-- PetListScreen.java : pet list screen GUI
-- PetAdoptionScreen.java : pet adoption form GUI
-- AddPetScreen.java : add new pet screen GUI (admin only)
-- pets.txt : saved pet data (auto-generated)
-- users.txt : saved user data (auto-generated)
-.vscode : the IDE
-- launch.json : VS Code run configuration
-
+```
+PAC-MAN/
+├── Pet.java                  — base class for all pets
+├── Cat.java                  — extends Pet, adds indoor attribute
+├── Dog.java                  — extends Pet, adds trained attribute
+├── User.java                 — stores user credentials and adopted pets
+├── AdoptionCentre.java       — manages pets and users, handles file I/O
+├── main.java                 — launches the application
+├── LoginScreen.java          — login screen GUI
+├── RegisterScreen.java       — register screen GUI
+├── PetListScreen.java        — pet list screen GUI
+├── PetAdoptionScreen.java    — pet adoption form GUI
+├── AddPetScreen.java         — add new pet screen GUI (admin only)
+├── pets.txt                  — saved pet data (auto-generated)
+├── users.txt                 — saved user data (auto-generated)
+└── .vscode/
+    └── launch.json           — VS Code run configuration
+```
 # Requirements
 - Java JDK 24
 - JavaFX SDK 21.0.11
