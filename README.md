@@ -24,22 +24,22 @@ PAC-MAN is a desktop application that allows users to browse and adopt pets from
 - Pink and white themed JavaFX GUI
 
  # Project Structure
- PAC-MAN/
-├── Pet.java                  — base class for all pets
-├── Cat.java                  — extends Pet, adds indoor attribute
-├── Dog.java                  — extends Pet, adds trained attribute
-├── User.java                 — stores user credentials and adopted pets
-├── AdoptionCentre.java       — manages pets and users, handles file I/O
-├── main.java                 — launches the application
-├── LoginScreen.java          — login screen GUI
-├── RegisterScreen.java       — register screen GUI
-├── PetListScreen.java        — pet list screen GUI
-├── PetAdoptionScreen.java    — pet adoption form GUI
-├── AddPetScreen.java         — add new pet screen GUI (admin only)
-├── pets.txt                  — saved pet data (auto-generated)
-├── users.txt                 — saved user data (auto-generated)
-└── .vscode/
-    └── launch.json           — VS Code run configuration
+ PAC-MAN : the system
+- Pet.java: base class for all pets
+- Cat.java : extends Pet, adds indoor attribute
+- Dog.java : extends Pet, adds trained attribute
+-  User.java : stores user credentials and adopted pets
+- AdoptionCentre.java : manages pets and users, handles file I/O
+- main.java : launches the application
+- LoginScreen.java : login screen GUI
+- RegisterScreen.java : register screen GUI
+- PetListScreen.java : pet list screen GUI
+- PetAdoptionScreen.java : pet adoption form GUI
+- AddPetScreen.java : add new pet screen GUI (admin only)
+- pets.txt : saved pet data (auto-generated)
+- users.txt : saved user data (auto-generated)
+.vscode : the IDE
+- launch.json : VS Code run configuration
 
 # Requirements
 - Java JDK 24
@@ -54,16 +54,16 @@ PAC-MAN is a desktop application that allows users to browse and adopt pets from
 5. Press F5 to run the application
 
 # Default Login
-Username: Admin 
-Password: 1234 
-Role : Admin
+- Username: Admin 
+- Password: 1234 
+- Role : Admin
 New accounts can be registered through the Register screen. All registered accounts have the user role.
 
 # OOP Concepts Implemented
-Inheritance : Cat and Dog extend the Pet base class 
-Encapsulation : All attributes are private with public getters and setters 
-Polymorphism : PetAdoptionScreen handles both Cat and Dog through Pet parent class 
-Abstraction : AdoptionCentre hides data management complexity behind simple methods 
+- Inheritance : Cat and Dog extend the Pet base class 
+- Encapsulation : All attributes are private with public getters and setters 
+- Polymorphism : PetAdoptionScreen handles both Cat and Dog through Pet parent class 
+- Abstraction : AdoptionCentre hides data management complexity behind simple methods 
 
 # Data Files
 The application automatically creates two text files when first run:
