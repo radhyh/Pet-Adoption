@@ -2,11 +2,11 @@
 A GUI-based Pet Adoption Centre Management System developed using Java and JavaFX as part of the Object-Oriented Programming course project at International Islamic University Malaysia (IIUM).
 
 # Group Members
-Nuralia Maisara Binti Zambrie 2512336 Backend Developer (Pet Class, Pet List Screen)
-Nurradhiyah Binti Ridzuan 2513510 Project Manager (AdoptionCentre class, Add Pet Screen, GitHub)
-Nur Arfa Nisrina Binti Mohd Aizurizam 2517666File Handler (User class, Register Screen, File I/O)
-Nur Auni Faqihah Binti DK Sufian 2517726GUI Designer (Cat class, Login Screen)
-Nur Damia Hani Binti Ahmad Sha 2515376 Tester & Documenter (Dog class, Pet Adoption Screen)
+1. Nuralia Maisara Binti Zambrie 2512336 Backend Developer (Pet Class, Pet List Screen)
+2. Nurradhiyah Binti Ridzuan 2513510 Project Manager (AdoptionCentre class, Add Pet Screen, GitHub)
+3. Nur Arfa Nisrina Binti Mohd Aizurizam 2517666File Handler (User class, Register Screen, File I/O)
+4. Nur Auni Faqihah Binti DK Sufian 2517726GUI Designer (Cat class, Login Screen)
+5. Nur Damia Hani Binti Ahmad Sha 2515376 Tester & Documenter (Dog class, Pet Adoption Screen)
 
 - All members manage the main class and involve in report writing
 
