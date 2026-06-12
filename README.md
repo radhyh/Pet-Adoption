@@ -69,11 +69,13 @@ New accounts can be registered through the Register screen. All registered accou
 The application automatically creates two text files when first run:
 
 pets.txt — stores pet data in this format:
-
+```
 Dog,Oreo,Chihuahua,3,true,false
 Cat,Chipsmore,Siamese,2,true,true
-
+```
 users.txt — stores user data in this format:
-
+```
 Admin,1234,admin
 username,password,user
+```
+
